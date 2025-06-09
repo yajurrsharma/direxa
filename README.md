@@ -13,11 +13,11 @@ lorem ipsum
 ## Working
  Confused about your career? Here we have "Direxa", showcasing your future career based on you. Your career clarity is three steps away.
 
-### CognaTest
+### TENTATIVE
 A personality test, to understand your apptitude and yourself. 
 
 ### Innerkai 
 Analysing your traits and suggesting your personal career IKIGAI.
 
-### Trajecta 
+### TENTATIVE
 Sculpting your roadmap for ahead. 

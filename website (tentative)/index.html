@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Floating Text</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div id="container">
+    <div id="text"></div>
+  </div>
+
+  <div id="navbar">
+    <div class="nav-item">HOME</div>
+    <div class="nav-item">PATH</div>
+  </div>
+
+  <script>
+    const text = 'DIREXA';
+    const textEl = document.getElementById('text');
+    const container = document.getElementById('container');
+    const navbar = document.getElementById('navbar');
+
+    // Build spans
+    text.split('').forEach(char => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      textEl.appendChild(span);
+    });
+
+    const spans = [...textEl.querySelectorAll('span')];
+    const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const cursor = { x: mouse.x, y: mouse.y };
+
+    function dist(a, b) {
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      cursor.x = e.clientX;
+      cursor.y = e.clientY;
+    });
+
+    function animate() {
+      mouse.x += (cursor.x - mouse.x) / 15;
+      mouse.y += (cursor.y - mouse.y) / 15;
+
+      const rect = textEl.getBoundingClientRect();
+      const maxDist = rect.width / 2;
+
+      spans.forEach((span) => {
+        const spanRect = span.getBoundingClientRect();
+        const center = {
+          x: spanRect.left + spanRect.width / 2,
+          y: spanRect.top + spanRect.height / 2,
+        };
+
+        const d = dist(mouse, center);
+
+        const getAttr = (distance, minVal, maxVal) => {
+          const val = maxVal - Math.abs((maxVal * distance) / maxDist);
+          return Math.max(minVal, val + minVal);
+        };
+
+        const wght = getAttr(d, 100, 900);
+        const wdth = getAttr(d, 50, 200);
+        const ital = getAttr(d, 0, 1).toFixed(2);
+
+        span.style.fontVariationSettings = `'wght' ${wght}, 'wdth' ${wdth}, 'ital' ${ital}`;
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    // Animation timing
+    setTimeout(() => {
+      container.classList.add('to-center');
+    }, 100); // fade in
+
+    setTimeout(() => {
+      container.classList.add('to-top');
+    }, 6100); // float up after 6s
+
+    setTimeout(() => {
+      navbar.classList.add('show');
+    }, 8300); // fade in nav 2.2s after float up
+
+    animate();
+  </script>
+
+
+
+</body>
+</html>

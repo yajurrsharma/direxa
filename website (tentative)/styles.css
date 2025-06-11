@@ -1,0 +1,73 @@
+@font-face {
+      font-family: 'Compressa VF';
+      src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, 30%);
+      opacity: 0;
+      transition: opacity 1.5s ease, transform 2s ease-in-out;
+    }
+
+    #container.to-center {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+
+    #container.to-top {
+      transform: translate(-50%, -175%);
+    }
+
+    #text {
+      font-family: 'Compressa VF';
+      font-size: 160px;
+      color: white;
+      text-transform: uppercase;
+      white-space: nowrap;
+      user-select: none;
+      position: relative;
+    }
+
+    #text span {
+      display: inline-block;
+      transition: font-variation-settings 0.1s;
+    }
+
+    #navbar {
+      position: absolute;
+      left: 50%;
+      top: calc(12% + 25px); /* Fine-tuned offset to align with text center */
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 2s ease;
+      display: flex;
+      justify-content: space-between;
+      width: 700px; /* Increased for more spacing */
+      align-items: center;
+      pointer-events: none;
+}
+
+
+    #navbar.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-item {
+      font-family: 'Compressa VF';
+      font-size: 24px;
+      color: white;
+      text-transform: uppercase;
+      user-select: none;
+    }

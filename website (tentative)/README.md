@@ -1,6 +1,6 @@
 # Interface (Website form)
 
-### Tentative design, can use normal text based too
+### Tentative design, final draft can use text based python app too (it sucks tbh)
 
 
 

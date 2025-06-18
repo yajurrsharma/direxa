@@ -178,10 +178,10 @@ def eqtest():
     # Ask each question and store response score
     question_scores = {}
     for question in all_questions:
-        print(f"\n{question}")
+        print("\n" + question)
         print("Options: ")
         for option in response_values:
-            print(f"- {option}")
+            print("- " + option)
         while True:
             response = input("Your answer: ").strip()
             if response in response_values:
@@ -197,13 +197,11 @@ def eqtest():
             score += question_scores.get(q, 0)
         career_scores[career] = score
 
-    sorted_careers = sorted(career_scores.items(), key=lambda x: x[1], reverse=True)
+top_score = max(career_scores.values())
 
-    print("\nTop Recommended Career(s):")
-    top_score = sorted_careers[0][1]
-    for career, score in sorted_careers:
-        if score == top_score:
-            print(f"- {career} (Score: {score})")
-        else:
-            break
+print("\nTop Recommended Career(s):")
+for career, score in career_scores.items():
+    if score == top_score:
+        print("- " + career)
+
 

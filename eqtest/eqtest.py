@@ -197,11 +197,11 @@ def eqtest():
             score += question_scores.get(q, 0)
         career_scores[career] = score
 
-top_score = max(career_scores.values())
+    top_score = max(career_scores.values())
 
-print("\nTop Recommended Career(s):")
-for career, score in career_scores.items():
-    if score == top_score:
-        print("- " + career)
+    print("\nTop Recommended Career(s):")
+    for career, score in career_scores.items():
+        if score == top_score:
+            print("- " + career)
 
 

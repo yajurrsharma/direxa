@@ -1,5 +1,5 @@
 import json
-
+import turtle
 
 def eqtest():
 # Subject to Careers Mapping
@@ -204,4 +204,196 @@ def eqtest():
         if score == top_score:
             print("- " + career)
 
+            finalcareer = career
 
+    
+    attributes = {
+    "Ethical Hacker": ["Tech Savvy", "Problem Solver", "Desk Job"],
+    "Doctor": ["Empathetic", "Hardworking", "Active Field"],
+    "Psychologist": ["Interested In Psychology", "Approachable", "Extrovert"],
+    "Entrepreneur": ["Leader", "Risk Taker", "Extrovert"],
+    "Teacher": ["Empathetic", "Mentor", "Communicator"],
+    "Lawyer": ["Communicator", "Observant", "Active Field"],
+    "Sports": ["Sports Enthusiast", "Physically Fit", "Hardworking"],
+    "Chartered Accountant": ["Desk Job", "Numbers & Finance", "Detail-Oriented"],
+    "Pilot": ["Good Memory", "Hardworking", "Likes Travel"],
+    "Data Analyst": ["Tech Savvy", "Desk Job", "Data Handling"],
+    "Fashion Designer": ["Fashion Sense", "Confident", "Photogenic"],
+    "Influencer": ["Communicator", "Extrovert", "Camera Friendly"],
+    "Artist": ["Creative", "Eye For Detail", "Passion For Art"],
+    "Astronaut": ["Adaptable", "Team Player", "Interested In Space"],
+    "Politician": ["Leader", "Communicator", "Extrovert"],
+    "Archaeologist": ["Active Field", "Hardworking", "Interested In History"],
+    "UI/UX Designer": ["Tech Savvy", "Creative", "Eye For Detail"],
+    "Video Editor": ["Creative", "Desk Job", "Video Editing"],
+    "Career Counselor": ["Empathetic", "Extrovert", "Career Knowledge"],
+    "Defense": ["Patriotic", "Fit", "Leader"],
+    "Engineer": ["Tech Savvy", "Problem Solver", "Desk Job"],
+    "Prompt Engineering": ["Tech Savvy", "Creative", "AI Interest"],
+    "Architect": ["Creative", "Eye For Detail", "Design-Oriented"],
+    "Photographer": ["Eye For Detail", "Photography Interest", "Creative"]
+}
+
+    screen = turtle.Screen()
+    screen.bgcolor("white")
+
+    turt = turtle.Turtle()
+    turt.speed(0)
+    turt.pensize(2)
+
+    def draw_circle_with_text(x, y, color, text, label_offset_x=0, label_offset_y=0):
+        # Draw the circle
+        turt.penup()
+        turt.goto(x, y - 60) # radius = 100
+        turt.pendown()
+        turt.pencolor(color)
+        turt.circle(100)
+
+        # Add text at specified offset from circle center
+        turt.penup()
+        turt.goto(x + label_offset_x, y + label_offset_y)
+        turt.pencolor("black")
+        turt.write(text, align="center", font=("Arial", 12, "bold"))
+
+    r = 60
+    factor = 1.1
+
+    # Draw 4 circles with text placed toward outer edge
+    draw_circle_with_text(0, r * factor, "red", subject, 0, 80) # above
+    draw_circle_with_text(r * factor, 0, "green", attributes[finalcareer][0], 60, 30) # right
+    draw_circle_with_text(0, -r * factor, "blue", attributes[finalcareer][1], 0, -20) # below
+    draw_circle_with_text(-r * factor, 0, "orange", attributes[finalcareer][2], -60, 30) # left
+
+    # Add text at the center intersection
+    turt.penup()
+    turt.goto(0, 10)
+    turt.pencolor("black")
+    turt.write(finalcareer, align="center", font=("Arial", 12, "bold"))
+
+    turt.hideturtle()
+    screen.mainloop()
+
+    ans = input("Type yes to get your personal exam timetable! ")
+
+    if ans == "yes":
+        timetable = {
+        "Engineer": {
+            "Exam": "JEE Main 2026",
+            "Registration": "Nov–Dec 2025",
+            "Exam Sessions": "Jan 2026 (Session 1), Apr 2026 (Session 2)",
+            "Next Steps": "JEE Advanced (May–Jun), JoSAA counselling (May–Jul), Start B.Tech (Aug 2026)"
+        },
+        "Doctor": {
+            "Exam": "NEET UG 2026",
+            "Registration": "7 Feb – 7 Mar 2026",
+            "Correction": "9–11 Mar 2026",
+            "Exam": "3 May 2026",
+            "Result": "3rd–4th week of Jun 2026",
+            "Counselling": "July 2026"  
+        },
+        "Chartered Accountant": {
+            "Exam (Foundation)": "May 2026 session",
+            "Registration Deadline": "1 Jan 2026"  
+        },
+        "Pilot": {
+            "Entry Path": "DGCA‑approved CPL training",
+            "Minimum Age/Eligibility": "≥17 years + Class 12",
+            "Training": "Ground + 200 flight hours (12–18 months)",
+            "License Exams": "DGCA CPL during/after training; ATPL 1500 hours → written after CPL"  
+        },
+        "Data Analyst": {
+            "Path": "UG admission in BSc/BA (Stats/CS/Data Science)/B.Tech CS",
+            "Apply": "Summer 2026 after board results",
+            "No National Entrance Exam": "Direct or Uni‑level entrance"
+        },
+        "Psychologist": {
+            "Path": "UG in Psychology (BSc/BA)",
+            "Apply": "Summer 2026; no central exam except DU‑ET or university",
+            "Further": "M.A./M.Sc Psychology after graduation"
+        },
+        "Entrepreneur": {
+            "Path": "Varied UG/PG programs (BBA/MBA/Engineering)",
+            "Apply": "Summer 2026; no standardized exam except DU‑ET, etc."
+        },
+        "Teacher": {
+            "Exam": "NTSE + CTET (after graduation)",
+            "Apply UG": "B.Ed. or BA.Ed. admissions Summer 2026",
+            "Counselling": "University/State‑level after results"
+        },
+        "Lawyer": {
+            "Exam": "CLAT/LSAT–India 2026",
+            "Registration": "Jan–May 2026 (approx.)",
+            "Exam Date": "May 2026",
+            "Admission": "LLB via 5‑yr integrated programs"
+        },
+        "Sports": {
+            "Path": "Sports quotas in universities/colleges",
+            "Apply": "Summer 2026 with sports credentials",
+        },
+        "Fashion Designer": {
+            "Exam": "NIFT UG–2026 / NID DAT–2026",
+            "Registration": "Dec 2025 – Jan 2026",
+            "Exam": "Feb 2026",
+            "Admission": "April–May 2026"
+        },
+        "Influencer": {
+            "Path": "Any UG (Mass Comm, Marketing) + skill building",
+            "Apply": "Summer 2026; no central exam"
+        },
+        "Artist": {
+            "Exam": "NID DAT / UCEED / NIFT (for Arts)",
+            "Registration": "Dec 2025 – Jan 2026",
+            "Exam": "Feb 2026"
+        },
+        "Astronaut": {
+            "Path": "UG in Engineering/Science + apply for ISRO/NASA later",
+        },
+        "Politician": {
+            "Path": "UG in Political Science, Law, or Social Sciences",
+            "Apply": "Summer 2026; no central exam"
+        },
+        "Archaeologist": {
+            "Path": "UG in Archaeology/History",
+            "Apply": "Summer 2026; no central exam"
+        },
+        "UI/UX Designer": {
+            "Exam": "NID DAT or relevant Design UG",
+            "Registration": "Dec 2025 – Jan 2026",
+            "Exam": "Feb 2026"
+        },
+        "Video Editor": {
+            "Path": "UG in Film, Media Studies, or vocational diploma",
+            "Apply": "Summer 2026; focus on portfolio"
+        },
+        "Career Counselor": {
+            "Path": "UG in Psychology/Education + certification",
+            "Apply": "Summer 2026; no central exam"
+        },
+        "Defense": {
+            "Exam": "NDA 2 (Sept 2026) or CDS 1 (Feb 2027)",
+            "Registration NDA 2": "June–July 2026",
+            "Apply": "Pre‑commission training after undergrad"
+        },
+        "Prompt Engineering": {
+            "Path": "UG in CS, Engineering, AI/Data Science",
+            "Apply": "Summer 2026; no central exam"
+        },
+        "Architect": {
+            "Exam": "NATA 2026 / JEE Paper 2",
+            "Registration": "Dec 2025 – Feb 2026",
+            "Exam": "Apr 2026"
+        },
+        "Photographer": {
+            "Path": "UG in Film/Photography or vocational course",
+            "Apply": "Summer 2026; emphasize portfolio"
+        }
+    }
+        for q,x in timetable.items():
+            if finalcareer==q:
+                for p,y in x.items():
+                    print(p,y)
+                    print("Thank you for trusting Direxa! Wishing you success in what you do!")
+    else:
+        print("Thank you for trusting Direxa! Wishing you success in what you do!")
+
+    

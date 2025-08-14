@@ -168,9 +168,8 @@ def eqtest():
             if finalcareer==q:
                 for p,y in x.items():
                     print(p,y)
-                    print("Thank you for trusting Direxa! Wishing you success in what you do!")
-    else:
-        print("Thank you for trusting Direxa! Wishing you success in what you do!")
+print("Thank you for trusting Direxa! Wishing you success in what you do!")
 
     
+
 

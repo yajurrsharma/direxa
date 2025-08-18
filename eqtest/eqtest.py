@@ -45,11 +45,10 @@ def eqtest():
         data = json.load(data_file)
 
     subject = data['best_subject']
-    careers = []
 
     if subject == "None":
         subject = "No subject"
-        careers.extend(subject_careers.get(subject, []))
+    careers.extend(subject_careers.get(subject, []))
     all_questions = set()
     for career in careers:
         all_questions.update(career_questions.get(career, []))
@@ -171,3 +170,4 @@ def eqtest():
                 for p,y in x.items():
                     print(p,y)
 print("Thank you for trusting Direxa! Wishing you success in what you do!")
+

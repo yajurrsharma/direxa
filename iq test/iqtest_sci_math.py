@@ -76,11 +76,15 @@ def iqtest_sci_math():
           score[q['subject']] += 1
       count += 1
   
-  best_sub += (max(score, key=score.get))
+  best = max(score, key=score.get)   
+  max_score = score[best]            
+  if max_score < 7:
+    best_sub = ["No subject"]  
+  else:
+    best_sub = [best] 
 
   with open('data.json', 'r') as file:
       data = json.load(file)
-
     
   data["score"] = f'{score}'
   data['best_subject'] = f'{best_sub}'
@@ -92,3 +96,4 @@ def iqtest_sci_math():
 
 
   
+

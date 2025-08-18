@@ -77,8 +77,13 @@ def iqtest_com():
           score[q['subject']] += 1
       count += 1
 
+  best = max(score, key=score.get)   
+  max_score = score[best]            
+  if max_score < 7:
+    best_sub = ["No subject"]  
+  else:
+    best_sub = [best] 
 
-  best_sub += (max(score, key=score.get))
   with open('data.json', 'r') as file:
       data = json.load(file)
 
@@ -88,5 +93,6 @@ def iqtest_com():
 
   with open('data.json', 'w') as data_file:
       json.dump(data, data_file, indent=4)
+
 
 

@@ -77,7 +77,12 @@ def iqtest_sci_bio():
           score[q['subject']] += 1
       count += 1
 
-  best_sub += (max(score, key=score.get))
+  best = max(score, key=score.get)   
+  max_score = score[best]            
+  if max_score < 7:
+    best_sub = ["No subject"]  
+  else:
+    best_sub = [best] 
 
 
   with open('data.json', 'r') as file:
@@ -89,6 +94,7 @@ def iqtest_sci_bio():
 
   with open('data.json', 'w') as data_file:
       json.dump(data, data_file, indent=4)
+
 
 
 

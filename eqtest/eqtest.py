@@ -11,7 +11,7 @@ def eqtest():
         "Business Studies": ["Entrepreneur","Teacher"],
         "Physics": ["Defense", "Engineer", "Astronaut", "Architect","Astronaut","Teacher"],
         "Chemistry": ["Defense", "Engineer", "Astronaut", "Architect","Teacher"],
-        "No subject": ["Sports", "Fashion Designer", "Influencer", "Artist","UI/UX Designer", "Video Editor", "Career Counselor","Prompt Engineering", "Photographer","Teacher"]}
+        "No subject": ["Sports", "Fashion Designer", "Influencer", "Artist","UI/UX Designer", "Video Editor", "Career Counselor","Prompt Engineering", "Photographer"]}
 
 
     career_questions = {"Ethical Hacker": ["Would you consider yourself a tech savvy person?","Do you enjoy solving puzzles?","Would you prefer a desk job?"],
@@ -45,6 +45,7 @@ def eqtest():
         data = json.load(data_file)
 
     subject = data['best_subject']
+    careers = []
 
     if subject == "None":
         subject = "No subject"
@@ -170,4 +171,5 @@ def eqtest():
                 for p,y in x.items():
                     print(p,y)
 print("Thank you for trusting Direxa! Wishing you success in what you do!")
+
 

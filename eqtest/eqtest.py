@@ -3,14 +3,15 @@ import turtle
 
 def eqtest():
 
-    subject_careers = {"Mathematics": ["Ethical Hacker", "Pilot", "Data Analyst","Astronaut","Defense", "Engineer", "Astronaut", "Architect","Teacher"],
-        "Biology": ["Doctor", "Psychologist","Teacher"],
-        "Accountancy": ["Chartered Accountant","Teacher"],
-        "Political Science": ["Lawyer", "Politician","Teacher"],
-        "History": ["Archaeologist","Teacher"],
-        "Business Studies": ["Entrepreneur","Teacher"],
-        "Physics": ["Defense", "Engineer", "Astronaut", "Architect","Astronaut","Teacher"],
-        "Chemistry": ["Defense", "Engineer", "Astronaut", "Architect","Teacher"],
+    subject_careers = {"Mathematics": ["Ethical Hacker", "Pilot", "Data Analyst","Astronaut","Defense", "Engineer", "Astronaut", "Architect"],
+        "Biology": ["Doctor", "Psychologist"],
+        "Accountancy": ["Chartered Accountant"],
+        "Political Science": ["Lawyer", "Politician"],
+        "History": ["Archaeologist"],
+        "Business Studies": ["Entrepreneur"],
+        "Physics": ["Defense", "Engineer", "Astronaut", "Architect","Astronaut"],
+        "Chemistry": ["Defense", "Engineer", "Astronaut", "Architect"],
+        "Best Score": ["Teacher"],
         "No subject": ["Sports", "Fashion Designer", "Influencer", "Artist","UI/UX Designer", "Video Editor", "Career Counselor","Prompt Engineering", "Photographer"]}
 
 
@@ -47,12 +48,10 @@ def eqtest():
     subject = data['best_subject']
     careers = []
 
-    if subject == "None":
-        subject = "No subject"
-    careers.extend(subject_careers.get(subject, []))
+    careers.extend(subject_careers[subject])
     all_questions = set()
     for career in careers:
-        all_questions.update(career_questions.get(career, []))
+        all_questions.update(career_questions[career])
 
     question_scores = {}
     for question in all_questions:
@@ -70,16 +69,18 @@ def eqtest():
 
     career_scores = {}
     for career in careers:
-        score = 0
-        for q in career_questions.get(career, []):
-            score += question_scores.get(q, 0)
-        career_scores[career] = score
+        score = 0             
+        for q in career_questions[career]:
+            if q in question_scores:
+                score = score + question_scores[q]
+    career_scores[career] = score
 
     top_score = max(career_scores.values())
 
+
     print("\nTop Recommended Career:")
-    for career, score in career_scores.items():
-        if score == top_score:
+    for career in career_scores:
+        if career_scores[career] == top_score:
             print("- " + career)
 
             finalcareer = career
@@ -115,30 +116,28 @@ def eqtest():
     turt = turtle.Turtle()
     turt.speed(0)
     turt.pensize(2)
+    turtle.title("Ikigai")
 
-    def ikigai(x, y, color, text, label_offset_x=0, label_offset_y=0):
+    def ikigai(x, y, color, text, labelx=0, labely=0):
         turt.penup()
         turt.goto(x, y - 60) 
         turt.pendown()
         turt.pencolor(color)
         turt.circle(100)
         turt.penup()
-        turt.goto(x + label_offset_x, y + label_offset_y)
+        turt.goto(labelx,labely)
         turt.pencolor("black")
         turt.write(text, align="center", font=("Arial", 12, "bold"))
 
-    r = 60
-    factor = 1.1
-    ikigai(0, r * factor, "red", subject, 0, 80)
-    ikigai(r * factor, 0, "green", attributes[finalcareer][0], 60, 30) 
-    ikigai(0, -r * factor, "blue", attributes[finalcareer][1], 0, -20) 
-    ikigai(-r * factor, 0, "orange", attributes[finalcareer][2], -60, 30) 
+    ikigai(0, 6, "red", subject, 0, 80)
+    ikigai(66, -60, "green", attributes[finalcareer][0], 126, -30) 
+    ikigai(0, -126, "blue", attributes[finalcareer][1], 0, -146) 
+    ikigai(-66, -60, "orange", attributes[finalcareer][2], -126, -30) 
     turt.penup()
-    turt.goto(0, 10)
+    turt.goto(0, -40)
     turt.pencolor("black")
     turt.write(finalcareer, align="center", font=("Arial", 12, "bold"))
-    turt.hideturtle()
-    screen.mainloop()
+
 
     ans = input("Type yes to get your personal exam timetable! ")
     if ans == "yes":
@@ -171,5 +170,3 @@ def eqtest():
                 for p,y in x.items():
                     print(p,y)
 print("Thank you for trusting Direxa! Wishing you success in what you do!")
-
-

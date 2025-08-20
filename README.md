@@ -1,4 +1,4 @@
-# Direxa
+# Direxa (Class 12th CBSE Computer Science Project)
 
 This web interface is the ultimate solution to all your confusions related to your career ✨
 
